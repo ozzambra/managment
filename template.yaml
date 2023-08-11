@@ -43,7 +43,7 @@ Conditions:
     - Condition: FullDeployment
 Globals:
   Function:
-    Runtime: Python3.9
+    Runtime: Python3.7
     Timeout: 180
     MemorySize: 128
     Environment:
@@ -233,7 +233,6 @@ Resources:
     Condition: FullDeployment
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: python3.9
       Handler: app.lambda_handler
       CodeUri: src/lambda/
       Description: "This function reads the allowed and rejected products from the given PMP Experience and udpate the DynamoDB tables"
@@ -244,7 +243,6 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: add_sns_permission.handler
-      Runtime: python3.9
       CodeUri: src/add_sns_permission/
       Description: This lambda is the backed of the customer resource to add a new account to the SNS Topic Policy
       Role: !GetAtt SnsAddPermissionRole.Arn
